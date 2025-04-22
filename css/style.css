@@ -239,18 +239,19 @@ nav .toggle.icon-close::after {
 
 /* ======== HERO SECTION ======== */
 #hero {
-    padding: 0; /* Remove default section padding */
-    margin-top: var(--header-height); /* Adjust if navbar is not transparent initially */
-    height: calc(100vh - var(--header-height)); /* Calculate height based on viewport minus navbar */
-    position: relative; /* Needed for absolute positioning of controls/indicators */
-    overflow: hidden; /* Hide parts of images that might overflow */
+    padding: 0;
+    margin-top: var(--header-height);
+    height: 630px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0; /* Remove margem inferior */
 }
 
 #heroCarousel .carousel-item {
-    height: calc(100vh - var(--header-height));
+    height: 630px;
     background-size: cover;
     background-position: center center;
-    position: relative; /* For overlay */
+    position: relative;
 }
 
 /* Dark overlay for text readability */
@@ -261,52 +262,128 @@ nav .toggle.icon-close::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(18, 20, 32, 0.6); /* Dark color (#121420) with opacity */
-    z-index: 1; /* Place overlay below caption */
+    background: linear-gradient(-90deg, rgba(18, 20, 32, 0.6) 0%, rgba(18, 20, 32, 0.2) 100%);
+    z-index: 1;
 }
 
 #heroCarousel .carousel-caption {
-    z-index: 2; /* Ensure caption is above overlay */
-    text-align: center;
-    /* Override Bootstrap defaults if needed */
+    z-index: 2;
+    text-align: right; /* Alinhar texto à direita */
     bottom: 0;
     top: 0;
-    left: 15%; /* Add some horizontal padding */
-    right: 15%;
-    /* d-flex utils already handle alignment */
-    color: #fff; /* Ensure text is white */
+    left: 0;
+    right: 0;
+    padding: 0 15%;
+}
+
+#heroCarousel .carousel-caption .container {
+    max-width: 800px;
+    margin-left: auto; /* Mover container para direita */
+    margin-right: 0;
+    padding-right: 0;
 }
 
 #heroCarousel .carousel-caption h1 {
     color: #fff;
-    margin-bottom: 1rem;
-    font-size: 2.8rem; /* Adjust size as needed */
+    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adiciona sombra suave ao texto */
 }
 
 #heroCarousel .carousel-caption p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     margin-bottom: 2rem;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-left: auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave ao texto */
 }
 
-/* Style indicators and controls if needed */
+/* Estilo do botão mais suave */
+#heroCarousel .btn-primary {
+    background-color: transparent;
+    border: 2px solid #fff;
+    padding: 0.8rem 2.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    color: #fff;
+}
+
+#heroCarousel .btn-primary:hover {
+    background-color: #fff;
+    color: var(--dark-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Controles do carousel */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+    width: 5%;
+}
+
+#heroCarousel .carousel-indicators {
+    margin-bottom: 3rem;
+}
+
 #heroCarousel .carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 6px;
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0 5px;
+    transition: all 0.3s ease;
 }
 
-#heroCarousel .carousel-indicators .active {
+#heroCarousel .carousel-indicators button.active {
     background-color: #fff;
+    transform: scale(1.2);
 }
 
-#heroCarousel .carousel-control-prev-icon,
-#heroCarousel .carousel-control-next-icon {
-    background-size: 50%; /* Make icons smaller */
-    filter: invert(1) grayscale(100) brightness(2); /* Make icons white */
+/* Responsividade */
+@media (max-width: 991.98px) {
+    #heroCarousel .carousel-caption h1 {
+        font-size: 2.8rem;
+    }
+    
+    #heroCarousel .carousel-caption p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #heroCarousel .carousel-caption {
+        padding: 0 10%;
+        text-align: center; /* Centralizar em telas menores */
+    }
+    
+    #heroCarousel .carousel-caption .container {
+        margin: 0 auto; /* Centralizar container em telas menores */
+    }
+    
+    #heroCarousel .carousel-caption p {
+        margin: 0 auto 2rem; /* Centralizar parágrafo em telas menores */
+    }
+    
+    #heroCarousel .carousel-caption h1 {
+        font-size: 2.2rem;
+    }
+    
+    #heroCarousel .carousel-caption p {
+        font-size: 1rem;
+    }
+    
+    #heroCarousel .btn-primary {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.85rem;
+    }
 }
 
 /* ======== BUTTONS ======== */
@@ -346,6 +423,8 @@ nav .toggle.icon-close::after {
 
 /* ======== ABOUT SECTION ======== */
 #about {
+    margin-top: 0;
+    padding-top: 5rem;
     background-color: var(--container-color);
 }
 
@@ -511,7 +590,7 @@ nav .toggle.icon-close::after {
 }
 
 /* ======== RESPONSIVENESS (Adjustments after Bootstrap) ======== */
-@media (max-width: 991.98px) { /* Corresponds to Bootstrap's -lg breakpoint */
+@media (max-width: 991.98px) {
     /* Mobile menu styles are now handled by Bootstrap */
     /* We might need adjustments if Bootstrap defaults aren't perfect */
 

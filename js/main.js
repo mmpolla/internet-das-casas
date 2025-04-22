@@ -3,19 +3,18 @@ function loadTemplates() {
     // Inserir navbar
     const header = document.querySelector('header');
     if (header) {
-        header.innerHTML = templates.navbar;
+        header.innerHTML = navbarTemplate;
     }
 
     // Inserir footer
     const footer = document.querySelector('footer');
     if (footer) {
-        footer.innerHTML = templates.footer;
-    }
-
-    // Atualizar ano do copyright
-    const yearSpan = document.getElementById('currentYear');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+        footer.innerHTML = footerTemplate;
+        // Atualizar ano do copyright
+        const yearSpan = document.getElementById('currentYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
     }
 
     // Configurar scroll do navbar
@@ -86,4 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('was-validated');
         });
     }
+
+    // Inserir botão do WhatsApp
+    insertWhatsAppButton();
 }); 

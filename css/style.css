@@ -1,0 +1,851 @@
+/* ======== VARIABLES ======== */
+:root {
+  --header-height: 4.5rem;
+
+  /* colors */
+  --hue: 214; /* Adjusted hue for the blue tones */
+  --primary-color: hsl(var(--hue), 69%, 45%); /* #266dd3 */
+  --primary-color-alt: hsl(var(--hue), 69%, 55%); /* Lighter blue for hover */
+  --secondary-color: hsl(77, 62%, 43%); /* #a4bd2e */
+  --secondary-color-alt: hsl(77, 62%, 53%); /* Lighter green for hover */
+  --dark-color: hsl(240, 12%, 10%);  /* #121420 */
+  --dark-color-alt: hsl(240, 12%, 20%); /* Slightly lighter dark */
+  --light-color: hsl(200, 67%, 98%); /* #eef7fb */
+  --text-color: hsl(0, 0%, 50%); /* General text color */
+  --text-color-light: hsl(0, 0%, 95%);
+  --body-color: var(--light-color);
+  --container-color: #fff;
+
+  /* fonts */
+  --title-font: 'IBM Plex Sans', sans-serif;
+  --body-font: 'Roboto', sans-serif;
+
+  --title-font-size: 1.875rem; /* 30px */
+  --subtitle-font-size: 1.25rem; /* 20px */
+  --base-font-size: 1rem; /* 16px */
+  --small-font-size: 0.875rem; /* 14px */
+
+  /* gradients */
+  --gradient-dark-blue: linear-gradient(90deg, #121420 0%, #266dd3 100%);
+  --gradient-light-blue: linear-gradient(90deg, #eef7fb 0%, #266dd3 100%);
+  --gradient-green-light: linear-gradient(90deg, #a4bd2e 0%, #eef7fb 100%);
+  --gradient-dark-green: linear-gradient(90deg, #121420 0%, #a4bd2e 100%);
+}
+
+/* ======== BASE ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 400 var(--base-font-size) var(--body-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+title {
+  font: 700 var(--title-font-size) var(--title-font);
+  color: var(--dark-color);
+}
+
+h1, h2, h3 {
+  font-family: var(--title-font);
+  color: var(--dark-color);
+  font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5rem; /* Adjust as needed */
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: var(--title-font-size);
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: var(--subtitle-font-size);
+    margin-bottom: 0.75rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--primary-color-alt);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ======== LAYOUT ======== */
+.container {
+  max-width: 1120px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+/* ======== HEADER ======== */
+#header {
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem; /* Add space below header */
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#header.scroll {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Make nav take full width of container */
+}
+
+nav .logo img {
+    height: 2.5rem; /* Adjust logo size */
+}
+
+nav .menu {
+  /* Basic desktop menu styles */
+}
+
+nav .menu ul {
+  display: flex;
+  gap: 2rem;
+}
+
+nav .menu ul li a {
+  font-family: var(--title-font);
+  font-weight: 500;
+  color: var(--dark-color);
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav .menu ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+
+nav .menu ul li a:hover,
+nav .menu ul li a.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+nav .menu ul li a:hover::after,
+nav .menu ul li a.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu Toggle - Initially Hidden */
+nav .toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    /* Adding width/height for icon positioning */
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+}
+
+/* Basic hamburger icon lines using pseudo-elements */
+nav .toggle.icon-menu::before,
+nav .toggle.icon-menu::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: transform 0.3s, top 0.3s;
+}
+
+nav .toggle.icon-menu::before {
+    top: 5px;
+}
+
+nav .toggle.icon-menu::after {
+    bottom: 5px;
+}
+
+/* Close icon (X) using pseudo-elements */
+nav .toggle.icon-close::before,
+nav .toggle.icon-close::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%; /* Center vertically */
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform-origin: center;
+    transition: transform 0.3s;
+}
+
+nav .toggle.icon-close::before {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+nav .toggle.icon-close::after {
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+/* ======== HERO SECTION ======== */
+#hero {
+    padding: 0; /* Remove default section padding */
+    margin-top: var(--header-height); /* Adjust if navbar is not transparent initially */
+    height: calc(100vh - var(--header-height)); /* Calculate height based on viewport minus navbar */
+    position: relative; /* Needed for absolute positioning of controls/indicators */
+    overflow: hidden; /* Hide parts of images that might overflow */
+}
+
+#heroCarousel .carousel-item {
+    height: calc(100vh - var(--header-height));
+    background-size: cover;
+    background-position: center center;
+    position: relative; /* For overlay */
+}
+
+/* Dark overlay for text readability */
+#heroCarousel .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(18, 20, 32, 0.6); /* Dark color (#121420) with opacity */
+    z-index: 1; /* Place overlay below caption */
+}
+
+#heroCarousel .carousel-caption {
+    z-index: 2; /* Ensure caption is above overlay */
+    text-align: center;
+    /* Override Bootstrap defaults if needed */
+    bottom: 0;
+    top: 0;
+    left: 15%; /* Add some horizontal padding */
+    right: 15%;
+    /* d-flex utils already handle alignment */
+    color: #fff; /* Ensure text is white */
+}
+
+#heroCarousel .carousel-caption h1 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 2.8rem; /* Adjust size as needed */
+}
+
+#heroCarousel .carousel-caption p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+/* Style indicators and controls if needed */
+#heroCarousel .carousel-indicators button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+#heroCarousel .carousel-indicators .active {
+    background-color: #fff;
+}
+
+#heroCarousel .carousel-control-prev-icon,
+#heroCarousel .carousel-control-next-icon {
+    background-size: 50%; /* Make icons smaller */
+    filter: invert(1) grayscale(100) brightness(2); /* Make icons white */
+}
+
+/* ======== BUTTONS ======== */
+.button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--text-color-light);
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  font-family: var(--title-font);
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--primary-color-alt);
+  color: var(--text-color-light);
+}
+
+.button.whatsapp-button {
+    background-color: #25D366; /* WhatsApp Green */
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button.whatsapp-button:hover {
+    background-color: #1DAE52; /* Darker WhatsApp Green */
+}
+
+.button.whatsapp-button .icon {
+    height: 1.2em; /* Adjust icon size */
+    width: auto;
+}
+
+/* ======== ABOUT SECTION ======== */
+#about {
+    background-color: var(--container-color);
+}
+
+#about p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* ======== SERVICES SECTION ======== */
+#services {
+    background-color: var(--bs-light);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.service-item {
+    background: var(--container-color);
+    padding: 2rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* ======== PORTFOLIO, TESTIMONIALS, BLOG, CONTACT SECTIONS (Basic Placeholders) ======== */
+#portfolio, #testimonials, #blog, #contact {
+    /* Basic styles */
+}
+
+#portfolio {
+     background-color: var(--container-color);
+}
+
+#testimonials {
+    background: var(--gradient-light-blue); /* Example gradient */
+    color: var(--dark-color);
+}
+
+#testimonials h2 {
+     color: var(--dark-color);
+}
+
+#blog {
+    background-color: var(--light-color);
+}
+
+#contact {
+    background-color: var(--dark-color);
+    color: var(--text-color-light);
+    text-align: center;
+}
+
+#contact h2, #contact p {
+    color: var(--text-color-light);
+}
+
+#contact .contact-options {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#contact .contact-options p {
+    margin: 0.5rem 0;
+}
+
+/* ======== FOOTER ======== */
+#footer {
+  background: var(--dark-color-alt);
+  color: var(--text-color-light);
+  /* padding: 2rem 0; */ /* Replaced by Bootstrap py-4 */
+  text-align: center;
+  /* margin-top: 3rem; */ /* Adjusted spacing via Bootstrap mb-* or section py-* */
+  font-size: var(--small-font-size);
+}
+
+#footer p {
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+#footer a {
+    /* color: var(--secondary-color); */ /* Using Bootstrap link classes now */
+    /* text-decoration: underline; */
+}
+
+#footer a:hover {
+    /* color: var(--secondary-color-alt); */
+}
+
+/* ======== BLOG POST PAGE STYLES ======== */
+
+.blog-post-page {
+    /* Spacing is handled by container py-5 and main mt-5 pt-5 */
+}
+
+.blog-post-full header h1 {
+    font-family: var(--title-font);
+    color: var(--dark-color); /* Use dark color for title */
+}
+
+.blog-post-full header p.text-muted {
+    font-size: var(--base-font-size);
+}
+
+.post-content {
+    font-family: var(--body-font);
+    line-height: 1.7;
+    font-size: 1.1rem; /* Slightly larger font for readability */
+    color: var(--text-color); /* Use standard text color */
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    font-family: var(--title-font);
+    color: var(--dark-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.post-content img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-content blockquote {
+    border-left-color: var(--primary-color) !important; /* Ensure our primary color is used */
+    font-size: 1.1rem;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-left: 2rem; /* Indent lists */
+    margin-bottom: 1.5rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Style for the scrolled navbar class added in blog post JS */
+.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* ======== RESPONSIVENESS (Adjustments after Bootstrap) ======== */
+@media (max-width: 991.98px) { /* Corresponds to Bootstrap's -lg breakpoint */
+    /* Mobile menu styles are now handled by Bootstrap */
+    /* We might need adjustments if Bootstrap defaults aren't perfect */
+
+     /* Adjust font sizes if needed */
+      h1, .display-4 {
+         font-size: 2.2rem; /* Example adjustment */
+     }
+     h2 {
+         font-size: 1.8rem;
+     }
+
+     #hero {
+         padding-top: 8rem; /* Adjust padding if navbar overlaps too much */
+         padding-bottom: 4rem;
+     }
+     /* Mantém a cor do fundo */
+  
+}
+
+
+@media (max-width: 767.98px) {
+  html {
+    /* font-size: 93.75%; */ /* Bootstrap might handle base font size well */
+  }
+
+  .container {
+    /* margin-left: 1rem; */ /* Bootstrap handles container padding */
+    /* margin-right: 1rem; */
+  }
+
+  /* Further adjustments for smaller screens if needed */
+   h1, .display-4 {
+      font-size: 1.9rem;
+  }
+  h2 {
+      font-size: 1.5rem;
+  }
+
+  .post-content {
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+
+}
+
+/* Keep the min-width media query for larger container */
+@media (min-width: 1200px) {
+    .container {
+        /* max-width: 1120px; */ /* Let Bootstrap handle max-width */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+    }
+}
+
+/* Override Bootstrap variables if needed */
+/* Example:
+:root {
+    --bs-primary: #266dd3;
+    --bs-secondary: #a4bd2e;
+    --bs-dark: #121420;
+    --bs-light: #eef7fb;
+    --bs-body-font-family: 'Roboto', sans-serif;
+    --bs-heading-font-family: 'IBM Plex Sans', sans-serif;
+}
+*/
+
+/* You might need to adjust variable overrides based on final appearance */
+:root {
+    --bs-primary: #266dd3;
+    --bs-primary-rgb: 38, 109, 211; /* Necessary for some Bootstrap components */
+    --bs-secondary: #a4bd2e;
+    --bs-secondary-rgb: 164, 189, 46;
+    --bs-dark: #121420;
+    --bs-dark-rgb: 18, 20, 32;
+    --bs-light: #eef7fb;
+    --bs-light-rgb: 238, 247, 251;
+    --bs-body-font-family: 'Roboto', sans-serif;
+    --bs-body-color: #495057; /* Default Bootstrap body color, adjust if needed */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: hsl(var(--hue), 69%, 55%); /* Use HSL primary alt */
+}
+
+body {
+     font-family: var(--bs-body-font-family);
+     color: var(--bs-body-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Sans', sans-serif; /* Apply title font to all headings */
+    font-weight: 700;
+    color: var(--bs-dark);
+}
+
+/* Custom button style if needed, complementing Bootstrap */
+.custom-btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    /* Add custom transitions or effects */
+    transition: all 0.3s ease;
+}
+
+.custom-btn-primary:hover {
+     background-color: var(--bs-link-hover-color);
+     border-color: var(--bs-link-hover-color);
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Adjust Navbar background/text colors */
+#mainNavbar {
+    /* Starts transparent or light, changes on scroll */
+    background-color: rgba(255, 255, 255, 0.9); /* Start slightly transparent */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#mainNavbar.navbar-scrolled {
+     background-color: #ffffff; /* Solid white on scroll */
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .nav-link {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    color: var(--bs-dark) !important; /* Ensure dark text */
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--bs-primary) !important; /* Use primary color for hover/active */
+}
+
+/* Adjust section backgrounds and styles */
+#hero {
+    /* background: var(--gradient-dark-blue); */ /* Removed, background is per-slide */
+    /* vh-100 class already makes it full height */
+    padding: 0; /* Remove default section padding */
+    margin-top: var(--header-height); /* Adjust if navbar is not transparent initially */
+    height: calc(100vh - var(--header-height)); /* Calculate height based on viewport minus navbar */
+    position: relative; /* Needed for absolute positioning of controls/indicators */
+    overflow: hidden; /* Hide parts of images that might overflow */
+}
+
+#services {
+    background-color: var(--bs-light);
+}
+
+.service-item.card {
+     border: none; /* Remove card border */
+     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item.card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+#testimonials {
+     background: var(--gradient-light-blue);
+     /* Adjust background if needed */
+}
+
+#blog {
+     background-color: var(--bs-light);
+}
+
+#contact {
+     background-color: var(--bs-dark);
+}
+
+/* Remove old base styles potentially conflicting with Bootstrap */
+/* html { scroll-behavior: smooth; } /* Bootstrap doesn't add this by default, keep if desired */
+/* * { margin: 0; padding: 0; box-sizing: border-box; } /* Bootstrap reboot handles this */
+/* title { ... } /* Handled by h1-h6 */
+/* a { ... } /* Handled by Bootstrap link styles */
+/* img { ... } /* Handled by img-fluid */
+/* ul { list-style: none; } /* Handled by Bootstrap nav/list-unstyled */
+/* .container { ... } /* Replaced by Bootstrap */
+/* .section { padding: 5rem 0; } /* Replaced by py-5 */
+/* .grid { ... } /* Replaced by row/col */
+/* #header { ... } /* Replaced by #mainNavbar styles */
+/* nav { ... } /* Replaced by #mainNavbar styles */
+/* nav .logo img { ... } /* Inline style used, can be class */
+/* nav .menu { ... } /* Replaced by navbar-nav */
+/* nav .menu ul { ... } */
+/* nav .menu ul li a { ... } /* Replaced by nav-link */
+/* nav .menu ul li a::after { ... } /* Removed, rely on color/weight change */
+/* nav .toggle { ... } /* Replaced by navbar-toggler */
+/* nav .toggle.icon-menu::before, ... icon-close::before { ... } /* Replaced by navbar-toggler-icon */
+/* .button { ... } /* Replaced by btn */
+/* .button.whatsapp-button { ... } /* Integrated with btn-success */
+/* .service-grid { ... } /* Replaced by row */
+/* .service-item { ... } /* Replaced by card */
+
+/* ======== RESPONSIVENESS (Example Breakpoint) ======== */
+@media (max-width: 768px) {
+  html {
+    font-size: 93.75%; /* 15px */
+  }
+
+  .container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  h1 {
+      font-size: 2rem;
+  }
+
+  h2 {
+      font-size: 1.6rem;
+  }
+
+  /* === Mobile Menu Styles === */
+  nav .menu {
+    /* Styles to hide desktop menu and show mobile menu */
+    display: block; /* Change display from none */
+    position: fixed; /* Fixed position to overlay content */
+    top: var(--header-height);
+    left: -100%; /* Start hidden off-screen */
+    width: 100%;
+    height: calc(100vh - var(--header-height)); /* Full viewport height minus header */
+    background-color: var(--body-color); /* Or a different background */
+    padding-top: 2rem;
+    transition: left 0.4s ease-out;
+    border-top: 1px solid #e4e4e4;
+    overflow-y: auto; /* Allow scrolling if menu is long */
+  }
+
+  nav .menu.show {
+      left: 0; /* Slide in when .show is added */
+  }
+
+  nav .menu ul {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 2rem; /* Add padding at the bottom */
+  }
+
+   nav .menu ul li a {
+       font-size: 1.1rem;
+   }
+
+   nav .menu ul li a::after {
+       bottom: -3px; /* Adjust underline position */
+   }
+   /* === End Mobile Menu Styles === */
+
+  nav .toggle {
+      display: block; /* Show hamburger icon */
+  }
+
+  /* Adjust grids for smaller screens */
+  .service-grid {
+      grid-template-columns: 1fr; /* Stack items */
+  }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+} 
+
+.bg-custom {
+  background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
+ 
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Contact Form Styles */
+#contactForm .form-control {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+#contactForm .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    box-shadow: none;
+}
+
+#contactForm .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#contactForm .invalid-feedback {
+    color: #ff6b6b;
+}

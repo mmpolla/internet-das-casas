@@ -88,4 +88,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inserir botão do WhatsApp
     insertWhatsAppButton();
+
+    // Fecha o menu mobile ao clicar em um link
+    // Seleciona todos os links do menu
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    // Seleciona o botão do menu mobile
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    // Seleciona o container do menu collapse
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    // Adiciona evento de clique para cada link do menu
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Verifica se o menu está aberto (tem a classe show)
+            if (navbarCollapse.classList.contains('show')) {
+                // Simula um clique no botão do menu para fechá-lo
+                navbarToggler.click();
+            }
+        });
+    });
 }); 

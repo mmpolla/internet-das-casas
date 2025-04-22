@@ -858,7 +858,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-right: auto;
     }
 } 
-
+  
 .bg-custom {
   background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
  

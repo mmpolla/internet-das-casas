@@ -32,7 +32,7 @@ $(document).ready(function() {
         }
 
         // Número do WhatsApp (substitua pelo número correto)
-        const phoneNumber = '5511999999999';
+        const phoneNumber = '5541999469446';
         
         // Codifica a mensagem para URL
         const encodedMessage = encodeURIComponent(message);

@@ -40,14 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar ScrollReveal
     const sr = ScrollReveal({
         origin: 'bottom',
-        distance: '30px',
-        duration: 700,
-        delay: 100,
-        easing: 'ease-out',
+        distance: '50px',
+        duration: 800,
+        delay: 150,
+        easing: 'ease-in-out',
         reset: false
     });
-    sr.reveal('.service-detail-item > div', { interval: 100 });
+
+    // Animar os itens de detalhe do serviço (se aplicável)
+    sr.reveal('.service-detail-item > div', { interval: 150 });
+
+    // Animar os botões
     sr.reveal('.text-center .btn', { delay: 200, interval: 100 });
+
+    // Animar os itens da seção de soluções/serviços na index
+    sr.reveal('#services .service-item', { interval: 200 });
 
     // Configurar validação do formulário
     const contactForm = document.getElementById('contactForm');

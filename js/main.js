@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const encodedMessage = encodeURIComponent(whatsappMessage);
                 
                 // Open WhatsApp with the message
-                window.open(`https://wa.me/5511999999999?text=${encodedMessage}`, '_blank');
+                window.open(`https://wa.me/5541999469446?text=${encodedMessage}`, '_blank');
                 
                 // Reset form
                 this.reset();

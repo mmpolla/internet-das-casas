@@ -13,9 +13,6 @@ const navbarTemplate = `
                     <li class="nav-item"><a class="nav-link" href="index.html#hero">INÍCIO</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#about">SOBRE NÓS</a></li>
                     <li class="nav-item"><a class="nav-link active" href="index.html#services">SERVIÇOS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#portfolio">PORTIFÓLIO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#testimonials">DEPOIMENTOS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#blog">BLOG</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">CONTATO</a></li>
                 </ul>
             </div>

@@ -444,6 +444,16 @@ nav .toggle.icon-close::after {
     margin-bottom: 2rem;
 }
 
+/* Alinha texto à direita quando a coluna de texto tem order-lg-1 (imagem à direita) */
+#services .service-item .col-lg-6.order-lg-1 {
+    text-align: right;
+}
+
+/* Garante alinhamento à esquerda por padrão nos outros casos */
+#services .service-item .col-lg-6:not(.order-lg-1):not([class*='order-lg-2']) {
+    text-align: left;
+}
+
 #services .service-item img {
     transition: transform 0.3s ease;
 }
@@ -467,8 +477,6 @@ nav .toggle.icon-close::after {
 .service-item {
     background: var(--container-color);
     padding: 2rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -501,13 +509,22 @@ nav .toggle.icon-close::after {
 }
 
 #contact {
-    background-color: var(--dark-color);
+    background-color: var(--bs-dark);
     color: var(--text-color-light);
-    text-align: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
-#contact h2, #contact p {
+#contact h2 {
     color: var(--text-color-light);
+    margin-bottom: 3rem;
+}
+
+#contact .card {
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Sem borda */
+    box-shadow: none; /* Sem sombra */
+    padding: 1rem;
 }
 
 #contact .contact-options {
@@ -520,6 +537,25 @@ nav .toggle.icon-close::after {
 
 #contact .contact-options p {
     margin: 0.5rem 0;
+}
+
+
+
+#contact .btn-primary {
+    background-color: #25D366; /* Verde WhatsApp */
+    border-color: #25D366;
+    color: #ffffff;
+}
+
+#contact .btn-primary:hover {
+    background-color: #1DAE52;
+    border-color: #1DAE52;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+#contact .btn-primary i {
+    color: #ffffff; /* Garante que o ícone seja branco */
 }
 
 /* ======== FOOTER ======== */
@@ -783,6 +819,11 @@ h1, h2, h3, h4, h5, h6 {
      background-color: var(--bs-dark);
 }
 
+
+
+
+
+
 /* Remove old base styles potentially conflicting with Bootstrap */
 /* html { scroll-behavior: smooth; } /* Bootstrap doesn't add this by default, keep if desired */
 /* * { margin: 0; padding: 0; box-sizing: border-box; } /* Bootstrap reboot handles this */
@@ -931,26 +972,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Contact Form Styles */
-#contactForm .form-control {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-}
 
-#contactForm .form-control:focus {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.4);
-    color: #fff;
-    box-shadow: none;
-}
-
-#contactForm .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-#contactForm .invalid-feedback {
-    color: #ff6b6b;
-}
 
 /* Estilos para telas médias */
 @media (min-width: 769px) and (max-width: 991px) {

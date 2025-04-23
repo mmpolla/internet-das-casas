@@ -41,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
 }
 
 body {
@@ -48,6 +49,10 @@ body {
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
+  padding-top: var(--header-height);
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 title {
@@ -87,7 +92,7 @@ a:hover {
 }
 
 img {
-  max-width: 100%;
+  max-width: 100%; /* Garante que imagens não ultrapassem o container */
   height: auto;
   display: block;
 }
@@ -98,11 +103,12 @@ ul {
 
 /* ======== LAYOUT ======== */
 .container {
-  max-width: 1120px;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
 }
 
 .section {
@@ -349,6 +355,10 @@ nav .toggle.icon-close::after {
 
 /* Responsividade */
 @media (max-width: 991.98px) {
+    #hero {
+         padding-top: 8rem; /* Adjust padding if navbar overlaps too much */
+         padding-bottom: 4rem;
+    }
     #heroCarousel .carousel-caption h1 {
         font-size: 2.8rem;
     }
@@ -371,7 +381,7 @@ nav .toggle.icon-close::after {
     #heroCarousel .carousel-caption p {
         margin: 0 auto 2rem; /* Centralizar parágrafo em telas menores */
     }
-    
+
     #heroCarousel .carousel-caption h1 {
         font-size: 2.2rem;
     }
@@ -540,7 +550,6 @@ nav .toggle.icon-close::after {
 }
 
 
-
 #contact .btn-primary {
     background-color: #25D366; /* Verde WhatsApp */
     border-color: #25D366;
@@ -695,9 +704,10 @@ nav .toggle.icon-close::after {
 /* Keep the min-width media query for larger container */
 @media (min-width: 1200px) {
     .container {
-        /* max-width: 1120px; */ /* Let Bootstrap handle max-width */
-        /* margin-left: auto; */
-        /* margin-right: auto; */
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     }
 }
 
@@ -819,113 +829,8 @@ h1, h2, h3, h4, h5, h6 {
      background-color: var(--bs-dark);
 }
 
-
-
-
-
-
-/* Remove old base styles potentially conflicting with Bootstrap */
-/* html { scroll-behavior: smooth; } /* Bootstrap doesn't add this by default, keep if desired */
-/* * { margin: 0; padding: 0; box-sizing: border-box; } /* Bootstrap reboot handles this */
-/* title { ... } /* Handled by h1-h6 */
-/* a { ... } /* Handled by Bootstrap link styles */
-/* img { ... } /* Handled by img-fluid */
-/* ul { list-style: none; } /* Handled by Bootstrap nav/list-unstyled */
-/* .container { ... } /* Replaced by Bootstrap */
-/* .section { padding: 5rem 0; } /* Replaced by py-5 */
-/* .grid { ... } /* Replaced by row/col */
-/* #header { ... } /* Replaced by #mainNavbar styles */
-/* nav { ... } /* Replaced by #mainNavbar styles */
-/* nav .logo img { ... } /* Inline style used, can be class */
-/* nav .menu { ... } /* Replaced by navbar-nav */
-/* nav .menu ul { ... } */
-/* nav .menu ul li a { ... } /* Replaced by nav-link */
-/* nav .menu ul li a::after { ... } /* Removed, rely on color/weight change */
-/* nav .toggle { ... } /* Replaced by navbar-toggler */
-/* nav .toggle.icon-menu::before, ... icon-close::before { ... } /* Replaced by navbar-toggler-icon */
-/* .button { ... } /* Replaced by btn */
-/* .button.whatsapp-button { ... } /* Integrated with btn-success */
-/* .service-grid { ... } /* Replaced by row */
-/* .service-item { ... } /* Replaced by card */
-
-/* ======== RESPONSIVENESS (Example Breakpoint) ======== */
-@media (max-width: 768px) {
-    /* Estilo do navbar principal */
-    #mainNavbar {
-        background-color: #ffffff !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Menu mobile quando aberto */
-    .navbar-collapse {
-        position: fixed;
-        top: var(--header-height);
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ffffff;
-        padding: 1rem;
-        margin: 0;
-        z-index: 1030;
-        overflow-y: auto;
-        transition: all 0.3s ease-in-out;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    /* Menu mobile quando ativo */
-    .navbar-collapse.show {
-        left: 0;
-    }
-
-    .navbar-nav {
-        background-color: #ffffff;
-        padding: 1rem 0;
-    }
-
-    .navbar-nav .nav-item {
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar-nav .nav-item:last-child {
-        border-bottom: none;
-    }
-
-    .navbar-nav .nav-link {
-        color: #121420 !important;
-        font-weight: 500;
-        font-size: 1.1rem;
-        padding: 0.75rem 0 !important;
-    }
-
-    .navbar-toggler {
-        padding: 0.5rem;
-        border: none;
-    }
-
-    .navbar-toggler:focus {
-        box-shadow: none;
-        outline: none;
-    }
-}
-
-/* Ajuste do navbar fixo no topo */
-#mainNavbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1120px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-} 
-  
 .bg-custom {
   background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
- 
 }
 
 /* WhatsApp Floating Button */
@@ -1004,5 +909,88 @@ h1, h2, h3, h4, h5, h6 {
         color: #121420 !important;
         font-weight: 500;
         padding: 0.5rem 0 !important;
+    }
+}
+
+/* Ajustes mobile */
+@media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding-top: var(--header-height);
+    }
+
+    #hero {
+        margin-top: 0;
+    }
+
+    /* Garante padding dos containers */
+    .container, .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    /* Remove margens negativas que podem causar overflow */
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ffffff;
+        padding: 1rem;
+        margin: 0;
+        z-index: 1030;
+        overflow-y: auto;
+        transition: all 0.3s ease-in-out;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .navbar-nav {
+        background-color: #ffffff;
+        padding: 1rem 0;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-nav .nav-link {
+        color: #121420 !important;
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 0.75rem 0 !important;
+    }
+
+    .navbar-toggler {
+        padding: 0.5rem;
+        border: none;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+        outline: none;
     }
 }

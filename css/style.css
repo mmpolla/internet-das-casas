@@ -246,7 +246,6 @@ nav .toggle.icon-close::after {
 /* ======== HERO SECTION ======== */
 #hero {
     padding: 0;
-    margin-top: var(--header-height);
     height: 630px;
     position: relative;
     overflow: hidden;
@@ -792,11 +791,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Adjust section backgrounds and styles */
 #hero {
-    /* background: var(--gradient-dark-blue); */ /* Removed, background is per-slide */
-    /* vh-100 class already makes it full height */
     padding: 0; /* Remove default section padding */
-    margin-top: var(--header-height); /* Adjust if navbar is not transparent initially */
-   /* height: calc(100vh - var(--header-height)); /* Calculate height based on viewport minus navbar */
     position: relative; /* Needed for absolute positioning of controls/indicators */
     overflow: hidden; /* Hide parts of images that might overflow */
 }
